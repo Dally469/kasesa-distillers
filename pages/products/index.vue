@@ -1,10 +1,7 @@
 <template>
   <NuxtLayout name="default">
     <div>
-      <HomePage />
-      <Promo />
-      <BreweryPub />
-      <DescoverBeers />
+      PRODUCTS
     </div>
   </NuxtLayout>
 </template>
@@ -12,8 +9,10 @@
 <script lang="ts" setup>
 definePageMeta({
   layout: false,
-  title: " Home"
+  title: " Products"
 })
 </script>
 
-<style></style>
+<style>
+
+</style>
