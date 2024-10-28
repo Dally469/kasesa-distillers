@@ -5,6 +5,8 @@
       <Promo />
       <BreweryPub />
       <DescoverBeers />
+      <Articles/>
+      <Gallery/>
     </div>
   </NuxtLayout>
 </template>
