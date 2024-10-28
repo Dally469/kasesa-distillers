@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-        <div class="grid text-center grid-cols-4 md:grid-cols-3 sm:grid-cols-2 max-sm:grid-cols-1 gap-5">
+        <div class="grid text-center grid-cols-4 md:grid-cols-4 sm:grid-cols-2 max-sm:grid-cols-1 gap-5">
           <div  v-for="item in items" :key="item.id" class="bg-white flex flex-col py-9 items-center">
             <div class="w-[100px] h-[100px] bg-gray-200 p-5 rounded-full">
               <img :src="item.image" alt="" class="w-full h-full object-contain">
