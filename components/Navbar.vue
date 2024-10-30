@@ -6,7 +6,7 @@
             <div class="hidden md:flex space-x-4">
                 <a href="#" class="text-white hover:underline">Home</a>
                 <a href="#" class="text-white hover:underline">About</a>
-                <a href="#" class="text-white hover:underline">Contact</a>
+                <a href="/pages/countact-us" class="text-white hover:underline">Contact</a>
             </div>
         </div>
     </nav>

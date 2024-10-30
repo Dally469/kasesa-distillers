@@ -1,6 +1,6 @@
 <template>
   <div>
-
+<Navbar/>
     <section
       class="relative h-screen flex items-center justify-center py-10   sm:py-16 lg:py-24 text-white text-center">
       <!-- Background Slideshow with <img> tag -->

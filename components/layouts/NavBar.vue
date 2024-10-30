@@ -146,7 +146,7 @@ const linkItems = [
   },
   {
     link: "Contacts",
-    path: '/',
+    path: '/contact-us',
     id: 3,
     isDropdown: false
   },
