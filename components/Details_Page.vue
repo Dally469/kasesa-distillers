@@ -1,19 +1,14 @@
 <template>
   <div>
-    <!-- Header Section -->
-    <div class="container h-[400px] flex items-center justify-center flex-col bg-gray-500 py-9 text-center space-y-4">
-      <h1 class="text-5xl font-bold">20 Little Kegs</h1>
-      <p class="text-red-400">Home/Product/20 little kegs</p>
-    </div>
+   <Header :item="mainTitle[0]"/>
 
-    <!-- Main Content Section -->
     <div class="flex  gap-9 p-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <!-- Sidebar Section -->
+
       <div class="py-7 bg-[#262022] text-white w-full md:w-[30%]">
         <div class="px-6 mb-6">
           <UInput
             icon="i-heroicons-magnifying-glass-20-solid"
-            size="sm"
+            size="lg"
             color="white"
             :trailing="false"
             placeholder="Search Products..."
@@ -25,7 +20,6 @@
           <p class="text-center">No Products</p>
         </div>
 
-        <!-- Categories Section -->
         <div>
           <h1 class="text-center font-bold text-xl">CATEGORIES</h1>
           <div v-for="item in category" :key="item.id" class="py-4">
@@ -33,7 +27,6 @@
           </div>
         </div>
 
-        <!-- Product Tags Section -->
         <div class="m-10">
           <h2 class="text-center font-bold text-xl">PRODUCT TAGS</h2>
           <div class="flex flex-wrap gap-4 justify-center">
@@ -45,19 +38,19 @@
         </div>
       </div>
 
-      <!-- Products Section -->
       <div class="w-full md:w-[70%]">
-        <div class="flex justify-between items-center mb-6">
+        <div class="space-y-5 mb-6">
           <p>Integer sagittis nisi nec tortor fermentum aliquet. Integer non neque.</p>
-          <USelect
-    placeholder="Sort by ..."
-    :options="['Title', 'Price']"
-    v-model="sortOption" @change="sortProducts"
+ <div class=" w-full bg-red-50 p-5 flex justify-between items-center">
+  <h2 class="w-full text-gray-600 font-semibold"> Showing 1–6 of 11 results</h2>
+  <USelect
+    placeholder="default sorting"
+    class="w-1/2"
+    :options="['United States', 'Canada', 'Mexico']"
   />
+ </div>
         
         </div>
-
-        <!-- Product Grid -->
         <div class="grid gap-5 p-4 grid-cols-1 sm:grid-cols-2">
           <div v-for="item in paginatedProducts" :key="item.id" class="w-full">
             <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-lg">
@@ -100,6 +93,10 @@ const category = [
   { id: 4, category: "20 liter kegs" },
   { id: 5, category: "Beer cans" },
   { id: 6, category: "Bottled beer" },
+];
+const mainTitle = [
+{title:"Bottled beer",
+path:"home / Products / Bottled beer"}
 ];
 
 const Products = [
