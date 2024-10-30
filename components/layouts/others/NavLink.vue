@@ -1,11 +1,11 @@
 <template>
-  <li :class="id == selectedId ? 'font-semibold text-red-500' : ''" class="w-full group font-semibold ">
+  <li :class="id == selectedId ? 'font-medium text-red-500' : ''" class="w-full group font-medium ">
 
     <nuxt-link
       class="xl:px-4  cursor-pointer bg-transparent rounded-lg  dark:hover:text-red-500 focus:outline-none focus:shadow-outline"
       :to="url">
       <div class="flex w-auto gap-2">
-        <div>{{ name }}</div>
+        <div class="text-nowrap">{{ name }}</div>
         <div v-if="isDrop">
           <UIcon name="i-heroicons-chevron-down" class="text-bold" v-if="isDrop" :size="20" />
         </div>

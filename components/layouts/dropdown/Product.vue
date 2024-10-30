@@ -6,7 +6,7 @@ const productsItems = [
   {
     name: "Home",
     description: "ABV 6,5% | IBU 60 | OG 1.104",
-    images: "http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_08-360x1320.png"
+    images: "@/assets/images/products/pure-waragi.png"
 
   },
   {
