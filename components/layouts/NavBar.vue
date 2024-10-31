@@ -131,7 +131,7 @@ const linkItems = [
   },
 
   {
-    link: "Home",
+    link: "Services",
     url: '/',
     id: 5,
     isDropdown: false

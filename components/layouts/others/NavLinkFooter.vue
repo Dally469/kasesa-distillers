@@ -1,5 +1,5 @@
 <template>
-  <a class="py-1 text-muted  hover:text-red-500" :href="url"> {{ name }} </a>
+  <a class="py-1 text-muted text-sm font-medium hover:text-black duration-300" :href="url"> {{ name }} </a>
 </template>
 <script setup lang="ts">
 
