@@ -36,37 +36,33 @@ const items = [
 <template>
   <div class="bg-gray-100 text-black">
     <div class="max-w-7xl px-4 mx-auto sm:px-6 lg:px-8">
-      <div class="text-center py-7 px-5">
-        <h1 class="text-5xl pb-5 font-bold">Discover our beer</h1>
-        <p>Lorem ipsum, dolor sit amet praesentium. Harum quo sint ullam excepturi ex saepe inventore distinctio sunt voluptate quam!</p>
+      <div class="text-center py-7 lg:py-24 px-5">
+        <h1 class="text-5xl pb-5 text-red-700 font-bold">Discover our beer</h1>
+        <p class="text-xl">Join us in raising a glass to unforgettable moments and unforgettable flavors. Cheers to
+          excellence, from our distillery to your glass.
+        </p>
       </div>
-      <UCarousel 
-        v-slot="{ item }" 
-        :items="items" 
-        :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/3' }"
-
-        :prev-button="{
-          color: 'gray',
-          icon: 'i-heroicons-arrow-left-20-solid',
-          class: 'absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200'
-        }"
-        :next-button="{
-          color: 'gray',
-          icon: 'i-heroicons-arrow-right-20-solid',
-          class: 'absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200'
-        }"
-          arrows
-        >
-        <div class="flex flex-col items-center p-4">
-          <div class="w-[150px]">
+      <UCarousel v-slot="{ item }" :items="items" :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/4' }" :prev-button="{
+        color: 'gray',
+        icon: 'i-heroicons-arrow-left-20-solid',
+        class: 'absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200'
+      }" :next-button="{
+    color: 'gray',
+    icon: 'i-heroicons-arrow-right-20-solid',
+    class: 'absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200'
+  }" arrows>
+        <div class="flex flex-col items-center justify-center text-center p-4">
+          <div class="w-[100px] mx-auto">
             <img :src="item.src" class="w-full" draggable="false">
           </div>
           <h3 class="mt-2 text-2xl py-3 font-semibold">{{ item.title }}</h3>
           <p class="text-gray-600">{{ item.description }}</p>
         </div>
       </UCarousel>
+
       <div class="flex justify-center py-5">
-        <button class="bg-red-500 py-3 px-9 font-semibold rounded-full hover:bg-gray-300 duration-300">Read More</button>
+        <button class="bg-red-500 py-3 px-9 font-semibold rounded-full hover:bg-gray-300 duration-300">Read
+          More</button>
       </div>
     </div>
   </div>
