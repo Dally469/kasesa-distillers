@@ -37,7 +37,7 @@ const items = [
   <div class="bg-gray-100 text-black">
     <div class="max-w-7xl px-4 mx-auto sm:px-6 lg:px-8">
       <div class="text-center py-7 lg:py-24 px-5">
-        <h1 class="text-5xl pb-5 text-red-700 font-bold">Discover our beer</h1>
+        <h1 class="text-5xl pb-5 text-[#F40035] font-bold">Discover our beer</h1>
         <p class="text-xl">Join us in raising a glass to unforgettable moments and unforgettable flavors. Cheers to
           excellence, from our distillery to your glass.
         </p>
@@ -47,10 +47,10 @@ const items = [
         icon: 'i-heroicons-arrow-left-20-solid',
         class: 'absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200'
       }" :next-button="{
-    color: 'gray',
-    icon: 'i-heroicons-arrow-right-20-solid',
-    class: 'absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200'
-  }" arrows>
+        color: 'gray',
+        icon: 'i-heroicons-arrow-right-20-solid',
+        class: 'absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200'
+      }" arrows>
         <div class="flex flex-col items-center justify-center text-center p-4">
           <div class="w-[100px] mx-auto">
             <img :src="item.src" class="w-full" draggable="false">
@@ -61,7 +61,7 @@ const items = [
       </UCarousel>
 
       <div class="flex justify-center py-5">
-        <button class="bg-red-500 py-3 px-9 font-semibold rounded-full hover:bg-gray-300 duration-300">Read
+        <button class="bg-[#F40035] py-3 px-9 font-semibold rounded-full hover:bg-gray-300 duration-300">Read
           More</button>
       </div>
     </div>

@@ -46,7 +46,7 @@ const footerMenu = ref([
 
 </script>
 <template>
-  <footer class="relative bg-red-600 text-white ">
+  <footer class="relative bg-[#F40035] text-white ">
     <div class="max-w-screen-2xl  px-4 py-16 mx-auto sm:px-6 lg:px-8 relative z-10">
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div>
@@ -61,7 +61,7 @@ const footerMenu = ref([
 
           </p>
           <div class="  mt-8 space-x-6  dark:text-muted">
-            <div class="flex items-center gap-5"  >
+            <div class="flex items-center gap-5">
               <div class="  border-white p-2 flex rounded-full group cursor-pointer duration-300 hover:bg-slate-500/20">
                 <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:text-black duration-300" width="24"
                   height="24" viewBox="0 0 24 24">

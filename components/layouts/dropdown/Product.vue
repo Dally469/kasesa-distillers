@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import { ref } from "vue"
 import NavLinkVue from '@/components/layouts/others/NavLink.vue';
@@ -46,7 +45,7 @@ const productsItems = [
       <div class="w-[50px]">
         <img :src="product.images" class="w-full" draggable="false">
       </div>
-      <h3 class="text-md py-1 font-semibold group-hover:text-red-700 duration-300">{{ product.name }}</h3>
+      <h3 class="text-md py-1 font-semibold group-hover:text-[#F40035] duration-300">{{ product.name }}</h3>
       <p class="text-gray-400 text-xs ">{{ product.description }}</p>
 
     </div>

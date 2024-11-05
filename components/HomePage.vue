@@ -15,7 +15,8 @@
         <div class="  max-w-screen-2xl  px-4 mx-auto sm:px-6 lg:px-8">
           <div class="grid items-center grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-20">
             <div class="">
-              <h2 class="text-5xl text-left flex flex-col pb-2 text font-bold leading-tight text-red-600 sm:text-4xl lg:text-5xl">
+              <h2
+                class="text-5xl text-left flex flex-col pb-2 text font-bold leading-tight text-[#F40035] sm:text-4xl lg:text-5xl">
                 <span class="lg:text-7xl">KASESA Distillers & Distributors Ltd</span>
                 <span class=" text-white lg:text-7xl">Poeple's Choice</span>
               </h2>
@@ -25,7 +26,7 @@
               </p>
               <div class="py-5">
                 <button
-                  class="bg-red-500 font-bold px-14 py-4 rounded-full hover:border-2 duration-200 hover:bg-transparent hover:border-red-500">Get
+                  class="bg-[#F40035] font-bold px-14 py-4 rounded-full hover:border-2 duration-200 hover:bg-transparent hover:border-red-500">Get
                   Beer</button>
               </div>
             </div>
@@ -39,7 +40,7 @@
         </div>
       </div>
     </section>
-     
+
   </div>
 </template>
 

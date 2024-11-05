@@ -1,8 +1,8 @@
 <template>
-  <li :class="id == selectedId ? 'font-medium text-red-500' : ''" class="w-full group font-medium ">
+  <li :class="id == selectedId ? 'font-medium text-[#F40035]' : ''" class="w-full group font-medium ">
 
     <nuxt-link
-      class="xl:px-4  cursor-pointer bg-transparent rounded-lg  dark:hover:text-red-500 focus:outline-none focus:shadow-outline"
+      class="xl:px-4  cursor-pointer bg-transparent rounded-lg  dark:hover:text-[#F40035] focus:outline-none focus:shadow-outline"
       :to="url">
       <div class="flex w-auto gap-2">
         <div class="text-nowrap">{{ name }}</div>
