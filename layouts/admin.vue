@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LayoutsContacts />
+    <slot />
   </div>
 </template>
 

@@ -1,11 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ['@nuxt/ui','@nuxtjs/color-mode'],
-  colorMode: {
-    preference: 'light',
-    fallback: 'light', 
+   runtimeConfig: {
+    public: {
+      baseUrl: process.env.BASE_URL || "XXXXXXXXXXXXXXXXXXXXX",
+    },
   },
+  modules: ["@nuxt/ui", "@pinia/nuxt"],
+  colorMode: {
+    preference: "light",
+    fallback: "light",
+  },
+  pinia: {},
 
-})
+  imports: {
+    dirs: ["./stores"],
+  },
+});

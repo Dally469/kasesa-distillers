@@ -19,8 +19,9 @@
 
           <div class="relative pl-20 pr-6 sm:pl-6 md:px-0">
             <div class="relative w-full max-w-xs mt-4 mb-10 ml-auto">
-              <img class="ml-auto" src="http://weisber.like-themes.com/wp-content/uploads/2019/04/beer-clock.png"
+              <img class="ml-auto" src="/assets/images/kasesa.png"
                 alt="" />
+               
             </div>
           </div>
           <div>

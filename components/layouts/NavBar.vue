@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="['fixed top-0 left-0 w-full  z-20 transition-all  duration-500', { ' transition-all duration-300 ease-in-out bg-white': hasShadow }, { 'bg-opacity-20  transition-opacity duration-1000 ease-in-out backdrop-blur-xl': dropdownNavbar && !hasShadow }]">
-    <div class="flex flex-col lg:flex-row justify-around items-center py-7">
+    :class="['fixed top-0 left-0 w-full  z-20 transition-all  duration-500', { ' transition-all shadow-xl duration-300 ease-in-out bg-white': hasShadow }, { 'bg-opacity-20  transition-opacity duration-1000 ease-in-out backdrop-blur-xl': dropdownNavbar && !hasShadow }]">
+    <div class="flex flex-col max-sm:space-y-5 lg:flex-row justify-around items-center py-7">
       <div class="flex items-center gap-5" :class="[{ 'text-white': !hasShadow }]">
         <div class="  border-white p-2 flex rounded-full group cursor-pointer duration-300 hover:bg-slate-500/20">
           <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:text-[#F40035] duration-300" width="24" height="24"
@@ -55,7 +55,7 @@
 
           <ul :class="[open ? 'flex' : 'hidden lg:flex']"
             class="w-full h-auto flex  items-center flex-col  dark:text-muted flex-grow uppercase xl:gap-x-16 mt-2 lg:items-center pb-4 lg:pb-0 lg:justify-end lg:flex-row origin-top duration-300 xl:space-x-4 space-y-4 lg:space-y-0">
-            <NavLinkVue v-for="(menu, index) in linkItems" :class="[{
+            <LayoutsOthersNavLink v-for="(menu, index) in linkItems" :class="[{
               'text-white':
                 !hasShadow
             }]" @click="menu.isDropdown ? dropdownToggler(menu.id) : chooseMenu(menu.id)" :name="menu.link"
@@ -66,7 +66,7 @@
 
       </div>
       <div v-if="dropdownNavbar" class="w-full dark:bg-white/10 dark:text-muted  shadow-xl">
-        <BaseDropdownProducts v-if="selected == 2" />
+        <LayoutsDropdownProduct v-if="selected == 2" />
 
       </div>
 
@@ -77,8 +77,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import NavLinkVue from "@/components/layouts/others/NavLink";
-import BaseDropdownProducts from "@/components/layouts/dropdown/Product";
+ 
 
 const colorMode = useColorMode()
 console.log(colorMode.preference)
@@ -126,7 +125,7 @@ const linkItems = [
   },
   {
     link: "Products",
-    path: '/',
+    url: '/',
     id: 2,
     isDropdown: true
 
@@ -148,7 +147,7 @@ const linkItems = [
   },
   {
     link: "Contacts",
-    path: '/',
+    url: '/contact-us',
     id: 3,
     isDropdown: false
   },

@@ -18,12 +18,9 @@
               <h2
                 class="text-5xl text-left flex flex-col pb-2 text font-bold leading-tight text-[#F40035] sm:text-4xl lg:text-5xl">
                 <span class="lg:text-7xl">KASESA Distillers & Distributors Ltd</span>
-                <span class=" text-white lg:text-7xl">Poeple's Choice</span>
+                <span class=" text-white lg:text-3xl mt-6">Poeple's Choice</span>
               </h2>
-              <p class="mt-4 text-base leading-relaxed text-gray-100">
-                Nam aliquet tincidunt ante, ac tempus quam faucibus vel. Cras volutpat interdum mi at sodales. Morbi
-                posuere, magna at finibus feugiat, ex ipsumante
-              </p>
+             
               <div class="py-5">
                 <button
                   class="bg-[#F40035] font-bold px-14 py-4 rounded-full hover:border-2 duration-200 hover:bg-transparent hover:border-red-500">Get
@@ -33,7 +30,8 @@
 
             <div class="relative pl-20 pr-6 sm:pl-6 md:px-0">
               <div class="relative w-full  mt-4 mb-10 ml-auto">
-                <img class="ml-auto" src="../assets/battles.png" alt="" />
+                <img class="ml-auto mt-6" src="/assets/images/mainpro.png" :class="`w-[600px]`" alt="" />
+                
               </div>
             </div>
           </div>
