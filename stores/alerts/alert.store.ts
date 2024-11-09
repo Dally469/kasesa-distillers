@@ -12,7 +12,7 @@ export const useAlertStore = defineStore("alertStore", () => {
     toast.add({
       icon: "i-heroicons-check-circle-16-solid",
       title: "Success",
-      color: "primary",
+      color: "green",
       description: message,
       timeout,
     });

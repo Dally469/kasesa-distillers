@@ -28,7 +28,7 @@ export const useAuthStore = defineStore("authStore", () => {
       .post("/auth/login", credentials)
       .then((res) => {
         if (res.status == 200) {
-          setToken(res.accessToken);
+          setToken(res.token);
           setUser(res.data);
           setLoading(false);
           navigateTo(`/dashboard`, { replace: true });

@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['fixed top-0 left-0 w-full  z-20 transition-all  duration-500', { ' transition-all shadow-xl duration-300 ease-in-out bg-white': hasShadow }, { 'bg-opacity-20  transition-opacity duration-1000 ease-in-out backdrop-blur-xl': dropdownNavbar && !hasShadow }]">
+    :class="['fixed top-0 left-0 w-full  z-20 transition-all  duration-500', { ' transition-all shadow-xl duration-300 ease-in-out bg-black': hasShadow }, { 'bg-opacity-20  transition-opacity duration-1000 ease-in-out backdrop-blur-xl': dropdownNavbar && !hasShadow }]">
     <div class="flex flex-col max-sm:space-y-5 lg:flex-row justify-around items-center py-7">
       <div class="flex items-center gap-5" :class="[{ 'text-white': !hasShadow }]">
         <div class="  border-white p-2 flex rounded-full group cursor-pointer duration-300 hover:bg-slate-500/20">
@@ -39,7 +39,16 @@
             class="flex align-center gap-1 dark:border border-red-500 hover:text-[#F40035] text-white hover:bg-white dark:hover:bg-transparent  duration-200 ease-out  rounded-lg px-6 py-2 bg-[#F40035] ">
             Get in Touch
           </nuxt-link>
-
+          <div @click="
+            toggleDarkMode($colorMode.preference === 'dark' ? 'light' : 'dark')
+            " class="flex space-x-2 items-center px-2 rounded-lg bg-gray-100 dark:bg-gray-900  cursor-pointer">
+            <div class="mt-2 text-gray-700 dark:text-gray-200 cursor-pointer ">
+              <UIcon class="h-5 w-5" v-if="$colorMode.preference === 'light'" name="i-heroicons-moon-16-solid" />
+              <UIcon class="h-5 w-5" v-else name="i-heroicons-sun-solid" />
+            </div>
+            <div class="font-medium text-sm dark:text-gray-200">{{ $colorMode.preference === 'light' ? 'Dark' :
+              'Light'}}</div>
+          </div>
         </div>
         <button class="rounded-lg lg:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
           <UIcon name="i-heroicons-bars-3" class="text-slate-700 dark:text-slate-400" v-if="!open" :size="24" />
