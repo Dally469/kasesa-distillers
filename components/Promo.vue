@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#F40035]">
+  <div class="bg-white">
     <section class="py-10 sm:py-16 lg:py-24">
       <div class="max-w-7xl px-4 mx-auto sm:px-6 lg:px-8">
         <div class="grid justify-between items-center grid-cols-1 gap-y-6 md:grid-cols-3 md:gap-x-20">
@@ -19,7 +19,7 @@
 
           <div class="relative pl-20 pr-6 sm:pl-6 md:px-0">
             <div class="relative w-full max-w-xs mt-4 mb-10 ml-auto">
-              <img class="ml-auto" src="/assets/images/kasesa.png"
+              <img class="ml-auto" src="/assets/images/kasads.png"
                 alt="" />
                
             </div>
@@ -48,17 +48,17 @@
 const items = [
   {
     id: 1,
-    title: "Selected Malts",
+    title: "African Gin 205ml",
     description: "Nulla imperdiet ultrices quam, et semper nibh fringilla porttitor nisl."
   },
   {
     id: 2,
-    title: "Quality Hops",
+    title: "Kasesa Pure Waragi",
     description: "Nulla imperdiet ultrices quam, et semper nibh fringilla porttitor nisl."
   },
   {
     id: 3,
-    title: "Special Water",
+    title: "Star Waragi",
     description: "Nulla imperdiet ultrices quam, et semper nibh fringilla porttitor nisl."
   },
 
@@ -67,17 +67,17 @@ const items = [
 const itimesx = [
   {
     id: 1,
-    title: "Unique Yeast",
+    title: "Cabinet Coconut",
     description: "Nulla imperdiet ultrices quam, et semper nibh fringilla porttitor nisl."
   },
   {
     id: 2,
-    title: "Perennial Recipes",
+    title: "Professor Waragi",
     description: "Nulla imperdiet ultrices quam, et semper nibh fringilla porttitor nisl."
   },
   {
     id: 3,
-    title: "Modern Equipment",
+    title: "Origin Pure Waragi",
     description: "Nulla imperdiet ultrices quam, et semper nibh fringilla porttitor nisl."
   },
 ]

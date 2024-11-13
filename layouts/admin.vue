@@ -5,13 +5,23 @@
       <UContainer class="text-white py-4 px-6 flex items-center justify-between">
         <div class="text-2xl text-primary-600 uppercase font-bold">Kasesa Admin Potal
         </div>
-        
+
         <div class="flex items-center space-x-4">
           <input type="text" placeholder="Search anything..."
             class="bg-gray-800 text-gray-300 px-4 py-2 rounded-full" />
+          <ClientOnly>
+            <UButton :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray"
+              variant="ghost" aria-label="Theme" @click="isDark = !isDark" />
+            <template #fallback>
+              <div class="w-8 h-8" />
+            </template>
+          </ClientOnly>
           <div class="flex items-center space-x-2">
-             <img src="https://avatar.iran.liara.run/public" alt="Profile" class="w-8 h-8 rounded-full" />
+            <img src="https://avatar.iran.liara.run/public" alt="Profile" class="w-8 h-8 rounded-full" />
           </div>
+
+          <UButton icon="i-heroicons-arrow-right-start-on-rectangle"  variant="outline"
+            label="Logout" @click="authStore.logout()" />
         </div>
       </UContainer>
       <UContainer class="flex items-center justify-between py-12">
@@ -20,7 +30,7 @@
           <section class="py-6 text-white">
             <div class=" ">
               <h1 class="text-4xl font-bold ">Hi 👋 {{ user.firstName + " "+ user.lastName}}</h1>
-              <p class="text-xl uppercase text-primary-700 pt-2">{{ user.role  }}</p>
+              <p class="text-xl uppercase text-primary-700 pt-2">{{ user.role }}</p>
             </div>
           </section>
 
@@ -57,7 +67,15 @@
 const open = ref(false)
 const authStore = useAuthStore();
 let selected = ref(1)
-
+const colorMode = useColorMode()
+const isDark = computed({
+  get() {
+    return colorMode.value === 'dark'
+  },
+  set() {
+    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+  }
+})
 const user = computed(() => authStore.user);
 
 function chooseMenu(tab: any) {

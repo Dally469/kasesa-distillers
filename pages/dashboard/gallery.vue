@@ -4,16 +4,16 @@
     <div class="flex mb-6 items-center justify-between ">
       <div>
         <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-          Teams
+          Gallery Photo
         </h1>
-        <p class="text-gray-500 dark:text-gray-400">List of All team members.</p>
+        <p class="text-gray-500 dark:text-gray-400">List of All gallery photos.</p>
       </div>
       <div class="flex items-center gap-4 mb-4">
         <UInput v-model="search" icon="i-heroicons-magnifying-glass-20-solid" size="lg" placeholder="Search...">
 
         </UInput>
         <div class="flex items-center">
-          <UButton label="Add Member" size="lg" color="primary" @click="mainStore.setAddModal(true)"
+          <UButton label="Add Photo" size="lg" color="primary" @click="mainStore.setAddModal(true)"
             icon="i-heroicons-plus-circle-20-solid" />
         </div>
 
@@ -21,7 +21,7 @@
 
     </div>
 
-    <DashboardTeamModals />
+    <DashboardGalleryModals/>
 
     <UCard>
       <UTable v-model="selected" :rows="filteredItems" :columns="columns" :loading="loading"
@@ -59,12 +59,12 @@
                 to
                 <span class="font-medium">{{ pageTo }}</span>
                 of
-                <span class="font-medium">{{ products.length }}</span>
+                <span class="font-medium">{{ galleryitems.length }}</span>
                 results
               </span>
             </div>
 
-            <UPagination v-model="page" :page-count="pageCount" :total="products.length" :ui="{
+            <UPagination v-model="page" :page-count="pageCount" :total="galleryitems.length" :ui="{
               wrapper: 'flex items-center gap-1',
               rounded: '!rounded-full min-w-[32px] justify-center',
               default: {
@@ -90,13 +90,13 @@ definePageMeta({
 });
 const search = ref('')
 const isOpen = ref(false)
-const store = useProductsStore()
+const store = useGalleryStore()
 const mainStore = useMainStore()
 
-const products = computed(() => { return store.products })
+const galleryitems = computed(() => { return store.gallery.slice().sort((a: any, b: any) => b.id - a.id); })
 const loading = computed(() => store.loading)
 onMounted(() => {
-  store.getProducts()
+  store.getGallery()
 })
 const columns = [
   { key: 'imageUrl', label: 'Image' },
@@ -106,19 +106,16 @@ const columns = [
   { key: 'actions', label: 'Actions' },
 ]
 
-const viewProduct = (item: any) => {
-  mainStore.setViewModal(true)
-  store.setSelectedProduct(item)
-}
+ 
 
 const deleteProduct = (item: any) => {
   mainStore.setDeleteModal(true)
-  store.setSelectedProduct(item)
+  store.setSelectedPhoto(item)
 }
 
 const updateProduct = (item: any) => {
   mainStore.setUpdateModal(true)
-  store.setSelectedProduct(item)
+  store.setSelectedPhoto(item)
 }
 
 const items = (row: any) => [
@@ -126,18 +123,14 @@ const items = (row: any) => [
     label: 'Edit Gallery',
     icon: 'i-heroicons-pencil-square-20-solid',
     click: () => updateProduct(row)
-  }, {
-    label: 'View Gallery',
-    icon: 'i-heroicons-eye-20-solid',
-    click: () => viewProduct(row)
-  }, {
+  } , {
     label: 'Delete Gallery',
     icon: 'i-heroicons-trash-20-solid',
     click: () => deleteProduct(row)
   }]
 ]
 
-const selected = ref([products])
+const selected = ref([galleryitems])
 const page = ref(1);
 const pageCount = ref(6);
 const pageTotal = ref(20); // This value should be dynamic coming from the API
@@ -147,15 +140,15 @@ const pageTo = computed(() =>
 );
 
 const filteredItems = computed(() => {
-  const rows = products.value?.slice(
+  const rows = galleryitems.value?.slice(
     (page.value - 1) * pageCount.value,
     page.value * pageCount.value
   );
   if (!search.value) {
-    return rows;
+    return rows.slice().sort((a: any, b: any) => b.id - a.id);;
   }
 
-  return rows.filter((team) => {
+  return rows.slice().sort((a: any, b: any) => b.id - a.id).filter((team: any) => {
     return Object.values(team).some((value) => {
       return String(value)
         .toLowerCase()

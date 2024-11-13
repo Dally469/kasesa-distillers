@@ -36,23 +36,24 @@
       <div class="flex items-center gap-x-5">
         <div :class="[open ? 'flex' : 'hidden lg:flex']" class="space-x-3">
           <nuxt-link to="/contact-us"
-            class="flex align-center gap-1 dark:border border-red-500 hover:text-[#F40035] text-white hover:bg-white dark:hover:bg-transparent  duration-200 ease-out  rounded-lg px-6 py-2 bg-[#F40035] ">
+            class="flex align-center gap-1 
+             hover:text-[#F40035] text-white hover:bg-white  duration-200 ease-out  rounded-lg px-6 py-2 bg-[#F40035] ">
             Get in Touch
           </nuxt-link>
           <div @click="
             toggleDarkMode($colorMode.preference === 'dark' ? 'light' : 'dark')
-            " class="flex space-x-2 items-center px-2 rounded-lg bg-gray-100 dark:bg-gray-900  cursor-pointer">
-            <div class="mt-2 text-gray-700 dark:text-gray-200 cursor-pointer ">
+            " class="flex space-x-2 items-center px-2 rounded-lg bg-gray-100  cursor-pointer">
+            <div class="mt-2 text-gray-700  cursor-pointer ">
               <UIcon class="h-5 w-5" v-if="$colorMode.preference === 'light'" name="i-heroicons-moon-16-solid" />
               <UIcon class="h-5 w-5" v-else name="i-heroicons-sun-solid" />
             </div>
-            <div class="font-medium text-sm dark:text-gray-200">{{ $colorMode.preference === 'light' ? 'Dark' :
+            <div class="font-medium text-sm ">{{ $colorMode.preference === 'light' ? 'Dark' :
               'Light'}}</div>
           </div>
         </div>
         <button class="rounded-lg lg:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
-          <UIcon name="i-heroicons-bars-3" class="text-slate-700 dark:text-slate-400" v-if="!open" :size="24" />
-          <UIcon name="i-heroicons-x-mark" class="text-slate-700 dark:text-slate-400" v-else :size="24" />
+          <UIcon name="i-heroicons-bars-3" class="text-slate-700 " v-if="!open" :size="24" />
+          <UIcon name="i-heroicons-x-mark" class="text-slate-700 " v-else :size="24" />
         </button>
       </div>
     </div>
@@ -63,7 +64,7 @@
         <div class="flex flex-col lg:flex-row items-center space-x-4 xl:space-x-8 ">
 
           <ul :class="[open ? 'flex' : 'hidden lg:flex']"
-            class="w-full h-auto flex  items-center flex-col  dark:text-muted flex-grow uppercase xl:gap-x-16 mt-2 lg:items-center pb-4 lg:pb-0 lg:justify-end lg:flex-row origin-top duration-300 xl:space-x-4 space-y-4 lg:space-y-0">
+            class="w-full h-auto flex  items-center flex-col flex-grow uppercase xl:gap-x-16 mt-2 lg:items-center pb-4 lg:pb-0 lg:justify-end lg:flex-row origin-top duration-300 xl:space-x-4 space-y-4 lg:space-y-0">
             <LayoutsOthersNavLink v-for="(menu, index) in linkItems" :class="[{
               'text-white':
                 !hasShadow
@@ -74,7 +75,7 @@
 
 
       </div>
-      <div v-if="dropdownNavbar" class="w-full dark:bg-white/10 dark:text-muted  shadow-xl">
+      <div v-if="dropdownNavbar" class="w-full shadow-xl">
         <LayoutsDropdownProduct v-if="selected == 2" />
 
       </div>

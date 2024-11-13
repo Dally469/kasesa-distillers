@@ -4,6 +4,7 @@ import {
   getDownloadURL,
   ref as storageRef,
   uploadBytesResumable,
+  uploadBytes,
 } from "firebase/storage";
 import { useNuxtApp } from "#app";
 
@@ -35,5 +36,20 @@ export const useFirebaseUpload = () => {
     }
   };
 
-  return { uploadImage, imageUrl, uploadProgress };
+   const uploadMultipleImages = async (files: any) => {
+     const urls = [];
+
+     for (const file of files) {
+       const fileRef = storageRef($storage, `gallery/${file.name}-${Date.now()}`);
+       await uploadBytes(fileRef, file);
+       const url = await getDownloadURL(fileRef);
+       
+       urls.push(url);
+     }
+
+     return urls;
+   };
+
+
+  return { uploadImage,uploadMultipleImages, imageUrl, uploadProgress };
 };

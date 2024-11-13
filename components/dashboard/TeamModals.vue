@@ -13,32 +13,59 @@
                 </template>
 
                 <div>
-                    <UForm :schema="schema" :state="state" class="space-y-4" enctype="multipart/form-data"
+                    <UForm :schema="schema" :state="state" class="space-y-1" enctype="multipart/form-data"
                         @submit="onSubmit">
                         <div>
-                            <UInput type="file" size="sm" icon="i-heroicons-folder" @input="handleFileUpload"
-                                accept="image/*" />
+                            <UFormGroup label="Member Profile" name="profile">
+                                <UInput type="file" size="sm" icon="i-heroicons-folder" @input="handleFileUpload"
+                                    accept="image/*" />
+                            </UFormGroup>
                             <UProgress v-if="uploadProgress > 0" :value="uploadProgress" indicator />
                             <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image"
                                 class="flex h-52 w-52 rounded-lg mt-2" />
                         </div>
-                        <UFormGroup label="Name" name="name">
-                            <UInput v-model="state.name" />
-                        </UFormGroup>
-                        <UFormGroup label="Price" name="price">
-                            <UInput v-model="state.price" />
-                        </UFormGroup>
-
-                        <UFormGroup label="Description" name="description">
-                            <UTextarea v-model="state.description" />
-                        </UFormGroup>
-
                         <div class="flex gap-4 ">
+                            <UFormGroup label="First Name" name="firstname">
+                                <UInput v-model="state.firstname" />
+                            </UFormGroup>
+                            <UFormGroup label="Last Name" name="lastname">
+                                <UInput v-model="state.lastname" />
+                            </UFormGroup>
+                        </div>
+                        <div class="flex gap-4 ">
+                            <UFormGroup label="Phone" class="w-full" name="phone">
+                                <UInput v-model="state.phone" />
+                            </UFormGroup>
+                            <UFormGroup label="Department" name="department" class="w-full">
+
+                                <USelectMenu v-model="state.department" value-attribute="name" option-attribute="name"
+                                    :options="departmentItems" />
+                            </UFormGroup>
+
+                        </div>
+                        <div class="flex gap-4 ">
+
+                            <UFormGroup label="Position" name="position" class="w-full">
+                                <USelectMenu v-model="state.position" value-attribute="name" option-attribute="name"
+                                    :options="positionItems" />
+
+                            </UFormGroup>
+
+                            <UFormGroup label="Status" name="status" class="w-full">
+                                <USelectMenu v-model="state.status" value-attribute="name" option-attribute="name"
+                                    :options="statusItems" />
+
+                            </UFormGroup>
+
+                        </div>
+
+
+                        <div class="flex justify-end gap-4 pt-4">
                             <UButton size="lg" @click="mainStore.setAddModal(false)" variant="outline">
                                 Close
                             </UButton>
                             <UButton size="lg" :loading="loading" :disabled="loading" type="submit">
-                                Save Product
+                                Save Member
                             </UButton>
 
                         </div>
@@ -61,13 +88,13 @@
                 </template>
                 <div>
                     <div class="text-lg flex text-center pb-4">
-                        Are you sure you want to delete this {{ product.name }}
+                        Are you sure you want to delete this {{ team?.firstname + " "+ team?.lastname }}
                     </div>
                     <div class="flex gap-4 justify-end ">
                         <UButton size="lg" @click="mainStore.setDeleteModal(false)" variant="outline">
                             Close
                         </UButton>
-                        <UButton size="lg" :loading="loading" :disabled="loading" @click="onDeleteProduct(product.id)">
+                        <UButton size="lg" :loading="loading" :disabled="loading" @click="onDeleteProduct(team?.id)">
                             Delete Member
                         </UButton>
 
@@ -90,23 +117,52 @@
 
                 <div class="space-y-4">
                     <div>
-                        <!-- <UInput type="file" size="sm" icon="i-heroicons-folder" @input="handleFileUpload" accept="image/*" /> -->
-                        <!-- <UProgress v-if="uploadProgress > 0" :value="uploadProgress" indicator /> -->
-                        <img v-if="product.imageUrl" :src="product.imageUrl" alt="Uploaded Image"
+                        <UInput type="file" size="sm" icon="i-heroicons-folder" @input="handleFileUpload"
+                            accept="image/*" />
+                        <UProgress v-if="uploadProgress > 0" :value="uploadProgress" indicator />
+                        <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image"
+                            class="flex h-52 w-52 rounded-lg mt-2" />
+                        <img v-else :src="team.profile" alt="Uploaded Image"
                             class="flex h-52 w-52 rounded-lg mt-2" />
                     </div>
-                    <UFormGroup label="Name" name="name">
-                        <UInput v-model="product.name" />
-                    </UFormGroup>
-                    <UFormGroup label="Price" name="price">
-                        <UInput v-model="product.price" />
-                    </UFormGroup>
-
-                    <UFormGroup label="Description" name="description">
-                        <UTextarea v-model="product.description" />
-                    </UFormGroup>
-
                     <div class="flex gap-4 ">
+                        <UFormGroup label="First Name" name="firstname">
+                            <UInput v-model="team.firstname" />
+                        </UFormGroup>
+                        <UFormGroup label="Last Name" name="lastname">
+                            <UInput v-model="team.lastname" />
+                        </UFormGroup>
+                    </div>
+                    <div class="flex gap-4 ">
+                        <UFormGroup label="Phone" class="w-full" name="phone">
+                            <UInput v-model="team.phone" />
+                        </UFormGroup>
+                        <UFormGroup label="Department" name="department" class="w-full">
+
+                            <USelectMenu v-model="team.department" value-attribute="name" option-attribute="name"
+                                :options="departmentItems" />
+                        </UFormGroup>
+
+                    </div>
+                    <div class="flex gap-4 ">
+
+                        <UFormGroup label="Position" name="position" class="w-full">
+                            <USelectMenu v-model="team.position" value-attribute="name" option-attribute="name"
+                                :options="positionItems" />
+
+                        </UFormGroup>
+
+                        <UFormGroup label="Status" name="status" class="w-full">
+                            <USelectMenu v-model="team.status" value-attribute="name" option-attribute="name"
+                                :options="statusItems" />
+
+                        </UFormGroup>
+
+                    </div>
+
+
+
+                    <div class="flex gap-4  ">
                         <UButton size="lg" @click="mainStore.setUpdateModal(false)" variant="outline">
                             Close
                         </UButton>
@@ -125,7 +181,7 @@
                 <template #header>
                     <div class="flex items-center justify-between">
                         <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
-                                Member Details
+                            Member Details
                         </h3>
                         <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1"
                             @click="mainStore.setViewModal(false)" />
@@ -142,13 +198,41 @@
 
 const search = ref('')
 const mainStore = useMainStore();
-const productStore = useProductsStore()
+const store = useTeamsStore()
 const loading = computed(() => {
-    return productStore.loading
+    return store.loading
 })
+const departmentItems = [{
+    id: 1,
+    name: 'Finance & Accounting'
+}, {
+    id: 2,
+    name: 'HR'
+}, {
+    id: 3,
+    name: 'Marketing'
+}, {
+    id: 4,
+    name: 'Employee'
+}]
+const positionItems = [{
+    id: 1,
+    name: 'Head of Office'
+}, {
+    id: 2,
+    name: 'Employee'
+}]
 
-const product = computed(() => {
-    return productStore.selectedProduct
+const statusItems = [{
+    id: 1,
+    name: 'ACTIVE'
+}, {
+    id: 2,
+    name: 'LOCKED'
+}]
+
+const team = computed(() => {
+    return store.selectedTeam
 })
 const addModal = computed(() => {
     return mainStore.addModal;
@@ -164,46 +248,70 @@ const viewModal = computed(() => {
 })
 
 // ADD PRODUCT
-import { number, object, string, type InferType } from 'yup'
+import { mixed, number, object, string, type InferType } from 'yup'
 import type { FormSubmitEvent } from '#ui/types'
 import { useFirebaseUpload } from '~/composables/useFirebaseUpload';
+const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1 MB
 
 const { uploadImage, imageUrl, uploadProgress } = useFirebaseUpload();
 const schema = object({
-    name: string().required('Product name is required'),
-    description: string().required('Product description is required'),
-    price: number().typeError('Price must be a number').required('Product price is required'),
+    firstname: string().required('First name is required'),
+    lastname: string().required('Last name is required'),
+    phone: number().typeError('Phone number must be decimal').required('Phone number is required'),
+    department: string().required('Department name is required'),
+    position: string().required('Position is required'),
+    status: string().required('Status is required'),
+    
+    
 })
-const MAX_IMAGE_SIZE = 500 * 1024; // 500 KB in bytes
 
 type Schema = InferType<typeof schema>
 
 const state = reactive({
-    name: undefined,
-    description: undefined,
-    price: undefined,
-    imageUrl: imageUrl
+    firstname: undefined,
+    lastname: undefined,
+    phone: undefined,
+    department: undefined,
+    position: undefined,
+    status: undefined,
+    profile: imageUrl
 })
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-    productStore.addProduct(event.data)
+    store.addTeam(event.data)
 }
 
-const fileUplaod = ref()
-const handleFileUpload = async (event: Event) => {
+ const handleFileUpload = async (event: Event) => {
     const target = event.target as HTMLInputElement;
     if (target.files && target.files[0]) {
         const file = target.files[0];
         await uploadImage(file);
+       
     }
+     
 };
 
 const onUpdateProduct = () => {
-    productStore.updateProduct(product.value)
-}
+
+    if (team.value) {
+        // Extract plain values to avoid circular references
+        const updatedTeam = {
+            id: team.value.id,
+            profile: imageUrl.value != null ? imageUrl.value : team.value.profile, // Assuming `imageUrl` is a ref with the URL as a string
+            firstname: team.value.firstname,
+            lastname: team.value.lastname,
+            phone: team.value.phone,
+            department: team.value.department,
+            position: team.value.position,
+            status: team.value.status // Assuming `imageUrl` is a ref with the URL as a string
+        };
+
+        store.updateTeam(updatedTeam); // Pass a plain object
+    }
+ }
 
 const onDeleteProduct = (productId: any) => {
-    productStore.deleteProduct(productId);
+    store.deleteTeam(productId);
 }
 
 </script>

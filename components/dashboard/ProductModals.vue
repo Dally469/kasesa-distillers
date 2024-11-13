@@ -87,9 +87,12 @@
 
         <div class="space-y-4">
           <div>
-            <!-- <UInput type="file" size="sm" icon="i-heroicons-folder" @input="handleFileUpload" accept="image/*" /> -->
-            <!-- <UProgress v-if="uploadProgress > 0" :value="uploadProgress" indicator /> -->
-            <img v-if="product.imageUrl" :src="product.imageUrl" alt="Uploaded Image" class="flex h-52 w-52 rounded-lg mt-2" />
+            <UInput type="file" size="sm" icon="i-heroicons-folder" @input="handleFileUpload" accept="image/*" />
+            <UProgress v-if="uploadProgress > 0" :value="uploadProgress" indicator />
+             
+            <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image" class="flex h-52 w-52 rounded-lg mt-2" />
+            <img v-else :src="product.imageUrl" alt="Uploaded Image" class="flex h-52 w-52 rounded-lg mt-2" />
+
           </div>
           <UFormGroup label="Name" name="name">
             <UInput v-model="product.name" />
@@ -195,8 +198,19 @@ const handleFileUpload = async (event: Event) => {
 };
 
 const onUpdateProduct = () => {
-  productStore.updateProduct(product.value)
-}
+  if (product.value) {
+    // Extract plain values to avoid circular references
+    const updatedProduct = {
+      id: product.value.id,
+      name: product.value.name,
+      description: product.value.description,
+      price: product.value.price,
+      imageUrl: imageUrl.value != null ? imageUrl.value : product.value.imageUrl
+    };
+
+    productStore.updateProduct(updatedProduct)
+  }
+};
 
 const onDeleteProduct = (productId: any) => {
   productStore.deleteProduct(productId);

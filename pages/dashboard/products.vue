@@ -9,11 +9,11 @@
         <p class="text-gray-500 dark:text-gray-400">List of All products.</p>
       </div>
       <div class="flex items-center gap-4 mb-4">
-        <UInput v-model="search" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search...">
+        <UInput v-model="search" size="lg" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search...">
 
         </UInput>
         <div class="flex items-center">
-          <UButton label="Add Product" color="primary" @click="mainStore.setAddModal(true)"
+          <UButton label="Add Product" size="lg" color="primary" @click="mainStore.setAddModal(true)"
             icon="i-heroicons-plus-circle-20-solid" />
         </div>
 
@@ -93,7 +93,7 @@ const isOpen = ref(false)
 const store = useProductsStore()
 const mainStore = useMainStore()
 
-const products = computed(() => { return store.products})
+const products = computed(() => { return store.products.slice().sort((a: any, b: any) => b.id - a.id); })
 const loading = computed(() => store.loading)
 onMounted(() => {
   store.getProducts()
@@ -126,11 +126,7 @@ const items = (row: any) => [
     label: 'Edit Product',
     icon: 'i-heroicons-pencil-square-20-solid',
     click: () => updateProduct(row)
-  }, {
-    label: 'View Product',
-    icon: 'i-heroicons-eye-20-solid',
-    click: () => viewProduct(row)
-  }, {
+  } , {
     label: 'Delete Product',
     icon: 'i-heroicons-trash-20-solid',
     click: () => deleteProduct(row)

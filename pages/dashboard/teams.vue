@@ -34,9 +34,9 @@
             row.name }}</span>
         </template>
 
-        <template #imageUrl-data="{ row }">
+        <template #profile-data="{ row }">
           <div class="border rounded-lg h-14 w-14 flex items-center justify-center">
-            <img :src="row.imageUrl" alt="Product Image" class="w-12 h-12 object-cover rounded-lg" />
+            <img :src="row.profile" alt="Team Image" class="w-12 h-12 object-cover rounded-lg" />
           </div>
         </template>
 
@@ -59,12 +59,12 @@
                 to
                 <span class="font-medium">{{ pageTo }}</span>
                 of
-                <span class="font-medium">{{ products.length }}</span>
+                <span class="font-medium">{{ teams.length }}</span>
                 results
               </span>
             </div>
 
-            <UPagination v-model="page" :page-count="pageCount" :total="products.length" :ui="{
+            <UPagination v-model="page" :page-count="pageCount" :total="teams.length" :ui="{
               wrapper: 'flex items-center gap-1',
               rounded: '!rounded-full min-w-[32px] justify-center',
               default: {
@@ -90,54 +90,53 @@ definePageMeta({
 });
 const search = ref('')
 const isOpen = ref(false)
-const store = useProductsStore()
+const store = useTeamsStore()
 const mainStore = useMainStore()
 
-const products = computed(() => { return store.products })
+const teams = computed(() => { return store.teams })
 const loading = computed(() => store.loading)
 onMounted(() => {
-  store.getProducts()
+  store.getTeams()
 })
 const columns = [
-  { key: 'imageUrl', label: 'Image' },
-  { key: 'name', label: 'Name' },
-  { key: 'description', label: 'Description' },
-  { key: 'price', label: 'Price' },
+  { key: 'profile', label: 'Image' },
+  { key: 'firstname', label: 'First Name' },
+  { key: 'lastname', label: 'Last Name' },
+  { key: 'phone', label: 'Phone' },
+  { key: 'department', label: 'Department' },
+  { key: 'position', label: 'Position' },
+  { key: 'status', label: 'Status' },
   { key: 'actions', label: 'Actions' },
 ]
 
-const viewProduct = (item: any) => {
+const viewTeam = (item: any) => {
   mainStore.setViewModal(true)
-  store.setSelectedProduct(item)
+  store.setSelectedTeam(item)
 }
 
-const deleteProduct = (item: any) => {
+const deleteTeam = (item: any) => {
   mainStore.setDeleteModal(true)
-  store.setSelectedProduct(item)
+  store.setSelectedTeam(item)
 }
 
-const updateProduct = (item: any) => {
+const updateTeam = (item: any) => {
   mainStore.setUpdateModal(true)
-  store.setSelectedProduct(item)
+  store.setSelectedTeam(item)
 }
 
 const items = (row: any) => [
   [{
     label: 'Edit Member',
     icon: 'i-heroicons-pencil-square-20-solid',
-    click: () => updateProduct(row)
-  }, {
-    label: 'View Member',
-    icon: 'i-heroicons-eye-20-solid',
-    click: () => viewProduct(row)
+    click: () => updateTeam(row)
   }, {
     label: 'Delete Member',
     icon: 'i-heroicons-trash-20-solid',
-    click: () => deleteProduct(row)
+    click: () => deleteTeam(row)
   }]
 ]
 
-const selected = ref([products])
+const selected = ref([teams])
 const page = ref(1);
 const pageCount = ref(6);
 const pageTotal = ref(20); // This value should be dynamic coming from the API
@@ -147,15 +146,15 @@ const pageTo = computed(() =>
 );
 
 const filteredItems = computed(() => {
-  const rows = products.value?.slice(
+  const rows = teams.value?.slice(
     (page.value - 1) * pageCount.value,
     page.value * pageCount.value
   );
   if (!search.value) {
-    return rows;
+    return rows.slice().sort((a: any, b: any) => b.id - a.id);
   }
 
-  return rows.filter((team) => {
+  return rows.slice().sort((a: any, b: any) => b.id - a.id).filter((team) => {
     return Object.values(team).some((value) => {
       return String(value)
         .toLowerCase()
