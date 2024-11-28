@@ -14,18 +14,15 @@ export const useGalleryStore = defineStore("galleryStore", () => {
   const addImageGallery = async (files: any) => {
     setLoading(true);
 
-    const formData = new FormData();
-    files.forEach((file: any) => {
-      formData.append("files", file); // The name 'files' should match @RequestParam("files")
-    });
     await httpRequest
-      .post("/gallery/upload-multiple", files)
+      .post("/gallery/bulks", files)
       .then((res) => {
         setGallery(res.data);
         alert.success(res.message);
         mainStore.setAddModal(false);
+        getGallery();
       })
-      .catch((error) => {})
+      .catch((error) => { })
       .finally(() => {
         setLoading(false);
       });
@@ -37,7 +34,7 @@ export const useGalleryStore = defineStore("galleryStore", () => {
       .then((res) => {
         setGallery(res.data);
       })
-      .catch((error) => {})
+      .catch((error) => { })
       .finally(() => {
         setLoading(false);
       });
@@ -49,13 +46,25 @@ export const useGalleryStore = defineStore("galleryStore", () => {
       .then((res) => {
         getGallery();
       })
-      .catch((error) => {})
+      .catch((error) => { })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+  const updateGallery = async (id: number, data: any) => {
+    setLoading(true);
+    await httpRequest
+      .put(`/gallery/update/${id}`, data)
+      .then((res) => {
+        getGallery();
+      })
+      .catch((error) => { })
       .finally(() => {
         setLoading(false);
       });
   };
 
-  return { gallery, loading, addImageGallery, getGallery, deleteGallery, selectedPhoto,setSelectedPhoto };
+  return { gallery, loading, addImageGallery, getGallery, deleteGallery, selectedPhoto, setSelectedPhoto, updateGallery };
 });
 if (import.meta.hot) {
   import.meta.hot.accept(acceptHMRUpdate(useGalleryStore, import.meta.hot));

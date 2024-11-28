@@ -1,26 +1,26 @@
 <template>
   <div
-    :class="['fixed top-0 left-0 w-full  z-20 transition-all  duration-500', { ' transition-all shadow-xl duration-300 ease-in-out bg-black': hasShadow }, { 'bg-opacity-20  transition-opacity duration-1000 ease-in-out backdrop-blur-xl': dropdownNavbar && !hasShadow }]">
-    <div class="flex flex-col max-sm:space-y-5 lg:flex-row justify-around items-center py-7">
+    :class="['fixed top-0 left-0 w-full  z-20 transition-all  bg-black duration-500', { ' transition-all shadow-xl duration-300 ease-in-out bg-black': hasShadow }, { ' transition-opacity duration-1000 ease-in-out bg-black': dropdownNavbar && !hasShadow }]">
+    <div class="flex flex-col max-sm:space-y-5 bg-[#F40035] lg:flex-row justify-around items-center py-4">
       <div class="flex items-center gap-5" :class="[{ 'text-white': !hasShadow }]">
-        <div class="  border-white p-2 flex rounded-full group cursor-pointer duration-300 hover:bg-slate-500/20">
-          <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:text-[#F40035] duration-300" width="24" height="24"
+        <div class="  border-white p-2 flex rounded-full group cursor-pointer duration-300 hover:bg-black">
+          <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:text-white duration-300" width="24" height="24"
             viewBox="0 0 24 24">
             <path fill="currentColor"
               d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74a2.89 2.89 0 0 1 2.31-4.64a3 3 0 0 1 .88.13V9.4a7 7 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a5 5 0 0 1-1-.1z" />
           </svg>
 
         </div>
-        <div class="  border-white p-2 flex rounded-full group cursor-pointer duration-300 hover:bg-slate-500/20">
-          <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:text-[#F40035] duration-300" width="24" height="24"
+        <div class="  border-white p-2 flex rounded-full group cursor-pointer duration-300 hover:bg-black">
+          <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:text-white duration-300" width="24" height="24"
             viewBox="0 0 24 24">
             <path fill="currentColor"
               d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999c0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891c1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999" />
           </svg>
 
         </div>
-        <div class="  border-white p-2 flex rounded-full group cursor-pointer duration-300 hover:bg-slate-500/20">
-          <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:text-[#F40035] duration-300" width="24" height="24"
+        <div class="  border-white p-2 flex rounded-full group cursor-pointer duration-300 hover:bg-black">
+          <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:text-white duration-300" width="24" height="24"
             viewBox="0 0 24 24">
             <path fill="currentColor"
               d="M20.947 8.305a6.5 6.5 0 0 0-.419-2.216a4.6 4.6 0 0 0-2.633-2.633a6.6 6.6 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.6 6.6 0 0 0-2.185.42a4.6 4.6 0 0 0-2.633 2.633a6.6 6.6 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.6 4.6 0 0 0 2.634 2.632a6.6 6.6 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.6 6.6 0 0 0 2.186-.419a4.62 4.62 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187c.043-.962.056-1.267.056-3.71c-.002-2.442-.002-2.752-.058-3.709m-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246m4.807-8.339a1.077 1.077 0 0 1-1.078-1.078a1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078" />
@@ -29,20 +29,16 @@
 
         </div>
       </div>
-      <div class="w-[100px]">
-        <img src="/assets/images/kasesa-logo-01.png" v-if="hasShadow" alt="logo" class="w-full rounded-3xl">
-        <img src="/assets/images/kasesa-logo-02.png" v-if="!hasShadow" alt="logo" class="w-full rounded-3xl">
+      <div class="w-[70px]">
+
+        <img src="/assets/images/kasesa-logo-02.png" alt="logo" class="w-full rounded-3xl">
       </div>
       <div class="flex items-center gap-x-5">
         <div :class="[open ? 'flex' : 'hidden lg:flex']" class="space-x-3">
-          <nuxt-link to="/contact-us"
-            class="flex align-center gap-1 
-             hover:text-[#F40035] text-white hover:bg-white  duration-200 ease-out  rounded-lg px-6 py-2 bg-[#F40035] ">
-            Get in Touch
-          </nuxt-link>
+
           <div @click="
             toggleDarkMode($colorMode.preference === 'dark' ? 'light' : 'dark')
-            " class="flex space-x-2 items-center px-2 rounded-lg bg-gray-100  cursor-pointer">
+            " class="  space-x-2 items-center px-2 rounded-lg hidden  cursor-pointer">
             <div class="mt-2 text-gray-700  cursor-pointer ">
               <UIcon class="h-5 w-5" v-if="$colorMode.preference === 'light'" name="i-heroicons-moon-16-solid" />
               <UIcon class="h-5 w-5" v-else name="i-heroicons-sun-solid" />
@@ -50,6 +46,11 @@
             <div class="font-medium text-sm ">{{ $colorMode.preference === 'light' ? 'Dark' :
               'Light'}}</div>
           </div>
+          <nuxt-link to="/auth/login"
+            class="flex align-center gap-1 
+             hover:text-[#F40035] text-white hover:bg-white  duration-200 ease-out  rounded-lg px-6 py-2 bg-[#F40035] ">
+            Login
+          </nuxt-link>
         </div>
         <button class="rounded-lg lg:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
           <UIcon name="i-heroicons-bars-3" class="text-slate-700 " v-if="!open" :size="24" />
@@ -60,7 +61,7 @@
     <nav>
       <div
         class="flex flex-col max-w-screen-2xl   px-8 mx-auto lg:items-center lg:justify-center  rounded-2xl lg:flex-row"
-        :class="[{ ' bg-black bg-opacity-20  transition-opacity duration-1000 ease-in-out backdrop-blur-lg': !hasShadow }]">
+        :class="[' bg-black bg-opacity-20  transition-opacity duration-1000 ease-in-out backdrop-blur-lg' ]">
         <div class="flex flex-col lg:flex-row items-center space-x-4 xl:space-x-8 ">
 
           <ul :class="[open ? 'flex' : 'hidden lg:flex']"
@@ -135,28 +136,36 @@ const linkItems = [
   },
   {
     link: "Products",
-    url: '/',
+    url: '#',
     id: 2,
     isDropdown: true
 
   },
+  
 
   {
     link: "Services",
-    url: '/',
+    url: '/services',
     id: 5,
     isDropdown: false
 
   },
   {
-    link: "Who we are",
-    url: '/',
+    link: "About Us",
+    url: '/about-us',
     id: 4,
     isDropdown: false
 
   },
   {
-    link: "Contacts",
+    link: "Teams",
+    url: '/team',
+    id: 8,
+    isDropdown: false
+
+  },
+  {
+    link: "Contacts Us",
     url: '/contact-us',
     id: 3,
     isDropdown: false

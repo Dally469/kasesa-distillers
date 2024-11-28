@@ -3,8 +3,15 @@
     <!-- Top Section with Black Background -->
     <header class="absolute mx-auto left-0 right-0 bg-gray-900">
       <UContainer class="text-white py-4 px-6 flex items-center justify-between">
-        <div class="text-2xl text-primary-600 uppercase font-bold">Kasesa Admin Potal
+        <div class="flex space-x-4 items-center">
+          <div class="w-[50px]">
+
+            <img src="/assets/images/kasesa-logo-02.png" alt="logo" class="w-full rounded-3xl">
+          </div>
+          <div class="text-2xl text-primary-600 uppercase font-bold">Admin Portal
+          </div>
         </div>
+
 
         <div class="flex items-center space-x-4">
           <input type="text" placeholder="Search anything..."
@@ -20,8 +27,8 @@
             <img src="https://avatar.iran.liara.run/public" alt="Profile" class="w-8 h-8 rounded-full" />
           </div>
 
-          <UButton icon="i-heroicons-arrow-right-start-on-rectangle"  variant="outline"
-            label="Logout" @click="authStore.logout()" />
+          <UButton icon="i-heroicons-arrow-right-start-on-rectangle" variant="outline" label="Logout"
+            @click="authStore.logout()" />
         </div>
       </UContainer>
       <UContainer class="flex items-center justify-between py-12">
@@ -111,6 +118,12 @@ const linkItems = [
     link: "Gallery",
     url: '/dashboard/gallery',
     id: 3,
+    isDropdown: false
+  },
+  {
+    link: "News & Events",
+    url: '/dashboard/blogs',
+    id: 7,
     isDropdown: false
   },
 ];

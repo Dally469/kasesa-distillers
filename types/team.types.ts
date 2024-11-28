@@ -8,3 +8,15 @@ export interface TeamData {
   status: string;
   profile: string;
 }
+
+
+export interface BlogData {
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  description: string;
+  createdAt: Date;
+  createdBy: string;
+  status: string;
+}

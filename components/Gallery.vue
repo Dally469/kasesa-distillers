@@ -1,23 +1,25 @@
 <script setup lang="ts">
-const items = [
-  'http://weisber.like-themes.com/wp-content/uploads/2018/02/02-1-275x275.jpg',
-  'http://weisber.like-themes.com/wp-content/uploads/2018/02/03-1-275x275.jpg',
-  'http://weisber.like-themes.com/wp-content/uploads/2018/02/07-1-275x275.jpg',
-  'http://weisber.like-themes.com/wp-content/uploads/2018/02/blog_09-275x275.jpg',
-  'http://weisber.like-themes.com/wp-content/uploads/2018/02/SLIDE_02-275x275.jpg',
-  'http://weisber.like-themes.com/wp-content/uploads/2018/02/blog_06-275x275.jpg',
-  'http://weisber.like-themes.com/wp-content/uploads/2018/02/blog_04-275x275.jpg',
-  'http://weisber.like-themes.com/wp-content/uploads/2018/02/06-1-275x275.jpg',
-  'http://weisber.like-themes.com/wp-content/uploads/2018/02/05-1-275x275.jpg'
+const store = useGalleryStore()
+const mainStore = useMainStore()
 
-]
+const galleryitems = computed(() => store.gallery.slice().sort((a: any, b: any) => b.id - a.id))
+const loading = computed(() => store.loading)
+
+onMounted(() => {
+  store.getGallery()
+})
 </script>
 
 <template>
   <div>
-    <UCarousel v-slot="{ item }" :items="items" :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/3' }">
-    <img :src="item" class="w-full" draggable="false">
-  </UCarousel>
+    <UCarousel v-slot="{ item }" :items="galleryitems" :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/5' }">
+      <div class="relative w-full h-96"> <!-- Adjust height as needed -->
+        <img :src="item.imageUrl" class="absolute top-0 left-0 w-full h-full object-cover" draggable="false" />
+      </div>
+    </UCarousel>
   </div>
 </template>
 
+<style scoped>
+/* Add any custom styles if necessary */
+</style>

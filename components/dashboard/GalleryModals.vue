@@ -17,19 +17,23 @@
 
                         <UInput type="file" size="sm" icon="i-heroicons-folder" multiple @input="handleFileSelection"
                             accept="image/*" />
-                          {{ uploadedUrls }}
+                         
                         <div class="flex gap-x-4" v-if="imagePreviews.length">
                             <div v-for="(preview, index) in imagePreviews" :key="index"
                                 class="h-24 w-24 rounded-lg border border-gray-300 p-1">
-                                <img :src="preview" alt="Image Preview" class="object-cover flex h-full w-full rounded-lg" />
+                                <img :src="preview" alt="Image Preview"
+                                    class="object-cover flex h-full w-full rounded-lg" />
                             </div>
                         </div>
                         <div class="flex gap-4 justify-end ">
                             <UButton size="lg" @click="mainStore.setAddModal(false)" variant="outline">
                                 Close
                             </UButton>
-                            <UButton size="lg" type="submit" :loading="loading" :disabled="loading">
+                            <UButton v-if="uploadedUrls.length == 0" size="lg" type="submit">
                                 Upload {{ selectedFiles.length }} Photo
+                            </UButton>
+                            <UButton v-else size="lg" :loading="loading"  @click="saveToGallery()"  :disabled="loading">
+                                Save {{ selectedFiles.length }} to Gallery
                             </UButton>
 
                         </div>
@@ -122,18 +126,34 @@ const handleFileSelection = (event: any) => {
     selectedFiles.value = Array.from(event.target.files); // Capture selected files
     // Generate image previews for selected files
     imagePreviews.value = selectedFiles.value.map(file => URL.createObjectURL(file));
+    
 };
 
 const handleUpload = async () => {
     if (selectedFiles.value.length) {
-        uploadedUrls.value = await uploadMultipleImages(selectedFiles.value);
+        // Upload images to Firebase and get the URLs
+        const uploaded = await uploadMultipleImages(selectedFiles.value);
 
-        if (uploadedUrls.value.length > 0) {
-            galleryStore.addImageGallery(uploadedUrls.value)
+        if (uploaded && uploaded.length > 0) {
+            // Map the uploaded image URLs to an array with imageUrl and name
+            uploadedUrls.value = uploaded.map((url, index) => ({
+                imageUrl: url,      // URL returned from Firebase upload
+                name: "Kasesa Image", // Original file name
+            }));
+
+            console.log(uploadedUrls.value);
+            
         }
     }
 };
 
+const saveToGallery = async () => {
+    if (selectedFiles.value.length) {
+        if (uploadedUrls.value.length > 0) {
+            galleryStore.addImageGallery(uploadedUrls.value);
+        }
+    }
+};
 
 </script>
 

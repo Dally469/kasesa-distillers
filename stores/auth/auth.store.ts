@@ -79,7 +79,7 @@ export const useAuthStore = defineStore("authStore", () => {
   const logout = () => {
     setUser();
     setToken();
-    navigateTo(`/auth/login`, { replace: true });
+    navigateTo(`/`, { replace: true });
   };
 
   return {

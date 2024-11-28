@@ -5,7 +5,7 @@ import NavBar from "@/components/layouts/NavBar.vue";
 const route = useRoute();
 const title = route.meta.title === undefined ? '' : `| ${route.meta.title}`
 useHead({
-  title: `KASESA Distillers && Distributors Ltd ${title}`,
+  title: `KASESA Distillers & Distributors Ltd ${title}`,
   meta: [
     {
       name: "description",

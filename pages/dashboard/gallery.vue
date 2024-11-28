@@ -101,9 +101,7 @@ onMounted(() => {
 const columns = [
   { key: 'imageUrl', label: 'Image' },
   { key: 'name', label: 'Name' },
-  { key: 'description', label: 'Description' },
-  { key: 'price', label: 'Price' },
-  { key: 'actions', label: 'Actions' },
+   { key: 'actions', label: 'Actions' },
 ]
 
  

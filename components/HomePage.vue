@@ -1,80 +1,106 @@
 <template>
-  <div>
+  <template>
+    <div>
 
-    <section
-      class="relative h-screen flex items-center justify-center py-10   sm:py-16 lg:py-24 text-white text-center">
-      <!-- Background Slideshow with <img> tag -->
-      <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div v-for="(image, index) in images" :key="index" :class="[
-          'absolute inset-0 w-full h-full bg-cover  bg-center transition-opacity duration-1000 ease-in-out',
-          { 'opacity-100 bg-black bg-opacity-20': currentImageIndex === index, 'opacity-0': currentImageIndex !== index },
-        ]" :style="{ backgroundImage: `url(${image})` }"></div>
-      </div>
-      <!-- Text Overlay -->
-      <div class="absolute bottom-10   z-10 bg-black bg-opacity-60 py-6   rounded-lg">
-        <div class="  max-w-screen-2xl  px-4 mx-auto sm:px-6 lg:px-8">
-          <div class="grid items-center grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-20">
-            <div class="">
-              <h2
-                class="text-5xl text-left flex flex-col pb-2 text font-bold leading-tight text-[#F40035] sm:text-4xl lg:text-5xl">
-                <span class="lg:text-7xl">KASESA Distillers & Distributors Ltd</span>
-                <span class=" text-white lg:text-3xl mt-6">Poeple's Choice</span>
-              </h2>
-             
-              <div class="py-5">
-                <button
-                  class="bg-[#F40035] font-bold px-14 py-4 rounded-full hover:border-2 duration-200 hover:bg-transparent hover:border-red-500">Get
-                  Beer</button>
-              </div>
-            </div>
-
-            <div class="relative pl-20 pr-6 sm:pl-6 md:px-0">
-              <div class="relative w-full  mt-4 mb-10 ml-auto">
-                <img class="ml-auto mt-6" src="/assets/images/mainpro.png" :class="`w-[600px]`" alt="" />
-                
-              </div>
-            </div>
+      <section class="relative h-lvh flex items-center justify-center text-white text-center">
+        <!-- Background Slideshow with Text Content -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <div v-for="(slide, index) in slides" :key="index" :class="[
+            'absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out',
+            { 'opacity-100 bg-black': currentSlideIndex === index, 'opacity-0': currentSlideIndex !== index },
+          ]">
+            <img :src="slide.image" class="w-full h-full object-cover" alt="Slideshow Image" />
           </div>
         </div>
-      </div>
-    </section>
 
-  </div>
+        <!-- Text Overlay for each slide -->
+        <div class="relative z-10 bg-black w-full  h-full px-auto bg-opacity-40 p-6 ">
+          <div class=" h-full   lg:absolute md:right-32 md:left-32   xl:right-40 xl:left-40 flex flex-col justify-center text-left duration-300 p-12">
+            <div
+              class=" lg:w-1/2 lg:px-12 lg:pt-20 absolute right-10 left-10 flex flex-col transition-all duration-300 justify-center items-start gap-2">
+              <div class="lg:text-8xl md:text-5xl sm:text-3xl max-sm:text-xl flex  duration-300 text-primary justify-end font-bold">{{
+                slides[currentSlideIndex].title }}
+              </div>
+              <p class="mt-4 text-5xl max-sm:text-xl ">{{ slides[currentSlideIndex].description }}</p>
+
+              <UButton size="lg" class="flex mt-5 w-32 text-center px-6">Read More</UButton>
+            </div>
+
+          </div>
+          <div class="absolute bottom-20 right-5 z-10 flex flex-col  items-end space-y-4">
+            <div class="bg-white rounded-full p-2 shadow-md flex items-center justify-center w-20 h-20">
+              <img src="/assets/icons/under-18-forbidden.jpg" alt="18+ Only"
+                class="w-full  h-full object-cover rounded-full" />
+            </div>
+            <div class="bg-white rounded-full p-2 shadow-md flex items-center justify-center w-20 h-20">
+              <img src="/assets/icons/no-pregnant-women-allowed.jpg" alt="No Pregnant Women"
+                class="w-full  h-full object-cover rounded-full" />
+            </div>
+            <div class="bg-white rounded-full p-2 shadow-md flex items-center justify-center w-20 h-20">
+              <img src="/assets/icons/ambieant.jpg" alt="No Cooling Place"
+                class="w-full  h-full object-cover rounded-full" />
+            </div>
+            <div class="bg-white rounded-full p-2 shadow-md flex items-center justify-center w-20 h-20">
+              <img src="/assets/icons/not-drink-drive.jpg" alt="Don't Drink and Drive"
+                class="w-full  h-full object-cover rounded-full" />
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </template>
+
 </template>
 
+ 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue';
-import Navbar from '~/components/Navbar.vue';
 
 export default defineComponent({
-  components: { Navbar },
   setup() {
-    // Store paths to images in the `assets` folder
-    const images = ref<string[]>([
-      "https://cdn.sanity.io/images/0cweren3/production/b659d1f55990cd38fd23dac98b20a6b5e83a18b4-6000x4000.jpg?w=3840&q=75&fit=max&auto=format",
-      "https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/34/2023/12/GettyImages-1288968311-920x609.jpg",
-      "https://www.suntoryglobalspirits.com/sites/default/files/styles/original/public/2024-02/Whiskey-hero%20card.png.webp?itok=KQv4MQSx",
-      // "https://img.freepik.com/free-photo/russian-vodka-background_8353-1240.jpg?t=st=1730277823~exp=1730281423~hmac=629c344304c38aaf8d8bd8f9e979843163283983cbd4ce256ad51036ca6b91f2&w=996"
-
+    // Define slides array with image paths and text content for each slide
+    const slides = ref([
+      {
+        image: "https://firebasestorage.googleapis.com/v0/b/taxi-9ba47.appspot.com/o/uploads%2Fback-two.png-1732811805330?alt=media&token=3816b81e-e6fe-4a4b-8be3-e0cd39aaae9b",
+        title: 'KASESA DISTILLERS & DISTRIBUTORS LTD',
+        description: "The People's Choice"
+       },
+      {
+        image: "https://firebasestorage.googleapis.com/v0/b/taxi-9ba47.appspot.com/o/uploads%2Fback-one.png-1732811908255?alt=media&token=11490401-5878-4ad5-8eca-1b597cc1bff5",
+        title: 'KASESA DISTILLERS & DISTRIBUTORS LTD',
+        description: "The People's Choice"
+       },
+      {
+        image: "https://firebasestorage.googleapis.com/v0/b/taxi-9ba47.appspot.com/o/uploads%2Fbackss.png-1732812020720?alt=media&token=b81b3da3-44a4-4b2f-9b83-b07e39dc2ba4",
+        title: 'KASESA DISTILLERS & DISTRIBUTORS LTD',
+        description: "The People's Choice"
+       },
     ]);
-    const currentImageIndex = ref<number>(0);
 
+    const currentSlideIndex = ref<number>(0);
+    
+    // Start the slideshow
     const startSlideShow = () => {
       setInterval(() => {
-        currentImageIndex.value = (currentImageIndex.value + 1) % images.value.length;
-      }, 6000);
+        currentSlideIndex.value = (currentSlideIndex.value + 1) % slides.value.length;
+      }, 8000);
     };
+
+ 
 
     onMounted(() => {
       startSlideShow();
+      // Fetch categories and services data when the component mounts
+      
     });
 
     return {
-      images,
-      currentImageIndex,
+      slides,
+      currentSlideIndex,
+     
     };
   },
 });
 </script>
-
 <style></style>

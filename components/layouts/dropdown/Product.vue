@@ -1,54 +1,33 @@
 <script setup lang="ts">
 import { ref } from "vue"
-import NavLinkVue from '@/components/layouts/others/NavLink.vue';
-const productsItems = [
-  {
-    name: "Home",
-    description: "ABV 6,5% | IBU 60 | OG 1.104",
-    images: "@/assets/images/products/pure-waragi.png"
 
-  },
-  {
-    name: "Home",
-    description: "ABV 6,5% | IBU 60 | OG 1.104",
-    images: "http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_08-360x1320.png"
+const store = useProductsStore()
 
-  },
-  {
-    name: "Home",
-    description: "ABV 6,5% | IBU 60 | OG 1.104",
-    images: "http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_08-360x1320.png"
+const products = computed(() => store.products)
 
-  }
-  , {
-    name: "Home",
-    description: "ABV 6,5% | IBU 60 | OG 1.104",
-    images: "http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_08-360x1320.png"
-
-  }, {
-    name: "Home",
-    description: "ABV 6,5% | IBU 60 | OG 1.104",
-    images: "http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_08-360x1320.png"
-
-  }, {
-    name: "Home",
-    description: "ABV 6,5% | IBU 60 | OG 1.104",
-    images: "http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_08-360x1320.png"
-
-  }
-];
+onMounted(() => {
+  store.getProducts()
+})
+ 
+const addToCart = (product: any) => {
+  console.log(product)
+}
+ 
 </script>
 <template>
-  <div class="relative max-w-screen-2xl   px-4 sm:px-8 mx-auto grid grid-cols-12 gap-x-6 overflow-hidden">
-    <div v-for="product in productsItems"
-      class="col-span-2 lg:col-span-2 border space-y-2 cursor-pointer group hover:border-red-500 duration-300 rounded-xl flex items-center justify-center flex-col py-4 px-4 sm:px-6 my-8">
-      <div class="w-[50px]">
-        <img :src="product.images" class="w-full" draggable="false">
+  <div class="relative max-w-screen-5xl bg-white  px-4 sm:px-8 overflow-hidden">
+    <div class="max-w-screen-2xl mx-auto   grid grid-cols-7 gap-x-6 ">
+      <div v-for="product in products"
+        class="col-span-2 lg:col-span-1 border space-y-2 cursor-pointer group hover:border-red-500 duration-300 rounded-xl flex items-center justify-center flex-col py-4 px-4 sm:px-6 my-8">
+        <div class="w-[100px]">
+          <img :src="product.imageUrl" class="w-full bg-transparent" draggable="false">
+        </div>
+        <h3 class="text-sm py-1 text-center text-black font-semibold group-hover:text-[#F40035] duration-300">{{ product.name }}</h3>
+        <p class="text-sm py-1 text-center text-gray-500 font-semibold group-hover:text-[#F40035] duration-300">{{ product.price }} RWF</p>
+  
       </div>
-      <h3 class="text-md py-1 font-semibold group-hover:text-[#F40035] duration-300">{{ product.name }}</h3>
-      <p class="text-gray-400 text-xs ">{{ product.description }}</p>
-
     </div>
+
 
   </div>
 </template>

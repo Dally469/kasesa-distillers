@@ -24,41 +24,21 @@
                             <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image"
                                 class="flex h-52 w-52 rounded-lg mt-2" />
                         </div>
-                        <div class="flex gap-4 ">
-                            <UFormGroup label="First Name" class="w-full" name="firstname">
-                                <UInput v-model="state.firstname" />
+                        <div class="  gap-4 ">
+                            <UFormGroup label="Title" class="w-full" name="title">
+                                <UInput v-model="state.title" />
                             </UFormGroup>
-                            <UFormGroup label="Last Name" class="w-full" name="lastname">
-                                <UInput v-model="state.lastname" />
-                            </UFormGroup>
-                        </div>
-                        <div class="flex gap-4 ">
-                            <UFormGroup label="Phone" class="w-full" name="phone">
-                                <UInput v-model="state.phone" />
-                            </UFormGroup>
-                            <UFormGroup label="Department" name="department" class="w-full">
-
-                                <USelectMenu v-model="state.department" value-attribute="name" option-attribute="name"
-                                    :options="departmentItems" />
-                            </UFormGroup>
-
-                        </div>
-                        <div class="flex gap-4 ">
-
-                            <UFormGroup label="Position" name="position" class="w-full">
-                                <USelectMenu v-model="state.position" value-attribute="name" option-attribute="name"
+                            <UFormGroup class="w-full" label="Subtile" name="subtitle">
+                                <USelectMenu v-model="state.subtitle" value-attribute="name" option-attribute="name"
                                     :options="positionItems" />
-
                             </UFormGroup>
-
-                            <UFormGroup label="Status" name="status" class="w-full">
-                                <USelectMenu v-model="state.status" value-attribute="name" option-attribute="name"
-                                    :options="statusItems" />
-
+                        </div>
+                        <div class="flex gap-4 ">
+                            <UFormGroup label="Phone" class="w-full" name="description">
+                                <UTextarea v-model="state.description" />
                             </UFormGroup>
 
                         </div>
-
 
                         <div class="flex justify-end gap-4 pt-4">
                             <UButton size="lg" @click="mainStore.setAddModal(false)" variant="outline">
@@ -80,7 +60,7 @@
                 <template #header>
                     <div class="flex items-center justify-between">
                         <h3 class="text-base font-semibold leading-6 text-primary dark:text-primary">
-                            Delete Member
+                            Delete Event & News
                         </h3>
                         <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1"
                             @click="mainStore.setDeleteModal(false)" />
@@ -88,14 +68,14 @@
                 </template>
                 <div>
                     <div class="text-lg flex text-center pb-4">
-                        Are you sure you want to delete this {{ team?.firstname + " " + team?.lastname }}
+                        Are you sure you want to delete this {{ team?.title }}
                     </div>
                     <div class="flex gap-4 justify-end ">
                         <UButton size="lg" @click="mainStore.setDeleteModal(false)" variant="outline">
                             Close
                         </UButton>
                         <UButton size="lg" :loading="loading" :disabled="loading" @click="onDeleteProduct(team?.id)">
-                            Delete Member
+                            Delete Event & News
                         </UButton>
 
                     </div>
@@ -108,7 +88,7 @@
                 <template #header>
                     <div class="flex items-center justify-between">
                         <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
-                            Update Member
+                            Update Event & News
                         </h3>
                         <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1"
                             @click="mainStore.setUpdateModal(false)" />
@@ -122,44 +102,23 @@
                         <UProgress v-if="uploadProgress > 0" :value="uploadProgress" indicator />
                         <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image"
                             class="flex h-52 w-52 rounded-lg mt-2" />
-                        <img v-else :src="team.profile" alt="Uploaded Image" class="flex h-52 w-52 rounded-lg mt-2" />
+                        <img v-else :src="team.image" alt="Uploaded Image" class="flex h-52 w-52 rounded-lg mt-2" />
                     </div>
-                    <div class="flex gap-4 ">
-                        <UFormGroup label="First Name" class="w-full" name="firstname">
-                            <UInput v-model="team.firstname" />
+                    <div class="  gap-4 ">
+                        <UFormGroup label="Title" class="w-full" name="title">
+                            <UInput v-model="team.title" />
                         </UFormGroup>
-                        <UFormGroup label="Last Name" class="w-full" name="lastname">
-                            <UInput v-model="team.lastname" />
-                        </UFormGroup>
-                    </div>
-                    <div class="flex gap-4 ">
-                        <UFormGroup label="Phone" class="w-full" name="phone">
-                            <UInput v-model="team.phone" />
-                        </UFormGroup>
-                        <UFormGroup label="Department" name="department" class="w-full">
-
-                            <USelectMenu v-model="team.department" value-attribute="name" option-attribute="name"
-                                :options="departmentItems" />
-                        </UFormGroup>
-
-                    </div>
-                    <div class="flex gap-4 ">
-
-                        <UFormGroup label="Position" name="position" class="w-full">
-                            <USelectMenu v-model="team.position" value-attribute="name" option-attribute="name"
+                        <UFormGroup class="w-full" label="Subtile" name="subtitle">
+                            <USelectMenu v-model="team.subtitle" value-attribute="name" option-attribute="name"
                                 :options="positionItems" />
-
                         </UFormGroup>
-
-                        <UFormGroup label="Status" name="status" class="w-full">
-                            <USelectMenu v-model="team.status" value-attribute="name" option-attribute="name"
-                                :options="statusItems" />
-
+                    </div>
+                    <div class="flex gap-4 ">
+                        <UFormGroup label="Description" class="w-full" name="description">
+                            <UTextarea v-model="team.description" />
                         </UFormGroup>
 
                     </div>
-
-
 
                     <div class="flex gap-4  ">
                         <UButton size="lg" @click="mainStore.setUpdateModal(false)" variant="outline">
@@ -197,58 +156,26 @@
 
 const search = ref('')
 const mainStore = useMainStore();
-const store = useTeamsStore()
+const authStore = useAuthStore();
+const store = useBlogsStore()
 const loading = computed(() => {
     return store.loading
 })
-const departmentItems = [
-    { id: 1, name: 'Sales and Marketing Depertment'},
-    { id: 2, name: 'Finance department'},
-    { id: 3, name: 'Operation department'},
-    { id: 4, name: 'Production department'},
-    { id: 5, name: 'Legal department'},
-    { id: 6, name: 'Logistic department'},
-    { id: 7, name: 'Warehouse Department'},
-    { id: 8, name: 'Technical department'},
-    { id: 9, name: 'Accounting Departement'},
-    { id: 10, name: 'production & quality Department'},
-    { id: 11, name: 'Cleaning Department'},
-    { id: 12, name: 'Secretariat department'},
-    { id: 13, name: 'Managing Director ' }, 
-    { id: 14, name: 'Transport department'}
-]
-const positionItems = [
-    { id: 1, name: 'Production officer' },
-    { id: 2, name: 'Marketing officer' },
-    { id: 3, name: 'Secretary' },
-    { id: 4, name: 'Legal officer' },
-    { id: 5, name: 'Stock manager' },
-    { id: 6, name: 'Logistic officer' },
-    { id: 7, name: 'Driver' },
-    { id: 8, name: 'Plumber' },
-    { id: 9, name: 'Sales manager' },
-    { id: 10, name: 'Accountant' },
-    { id: 11, name: 'Internal auditor' },
-    { id: 12, name: 'Manager' },
-    { id: 13, name: 'Production and Quality officer' },
-    { id: 14, name: 'Sales and Marketing promoter' },
-    { id: 15, name: 'Operator' },
-    { id: 16, name: 'Operation manager' },
-    { id: 17, name: 'Technician' },
-    { id: 18, name: 'Supervisor' },
-    { id: 19, name: 'Cleaner'}
-]
-
-const statusItems = [{
+ 
+const positionItems = [{
     id: 1,
-    name: 'ACTIVE'
+    name: 'Marketing'
 }, {
     id: 2,
-    name: 'LOCKED'
+    name: 'Events'
 }]
 
+ const user = computed(() => {
+    return authStore.user
+})
+
 const team = computed(() => {
-    return store.selectedTeam
+    return store.selectedBlog
 })
 const addModal = computed(() => {
     return mainStore.addModal;
@@ -271,12 +198,10 @@ const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1 MB
 
 const { uploadImage, imageUrl, uploadProgress } = useFirebaseUpload();
 const schema = object({
-    firstname: string().required('First name is required'),
-    lastname: string().required('Last name is required'),
-    phone: number().typeError('Phone number must be decimal').required('Phone number is required'),
-    department: string().required('Department name is required'),
-    position: string().required('Position is required'),
-    status: string().required('Status is required'),
+    title: string().required('Title name is required'),
+    subtitle: string().required('Subtitle is required'),
+    description: string().required('Description is required'),
+    
 
 
 })
@@ -284,17 +209,16 @@ const schema = object({
 type Schema = InferType<typeof schema>
 
 const state = reactive({
-    firstname: undefined,
-    lastname: undefined,
-    phone: undefined,
-    department: undefined,
-    position: undefined,
-    status: undefined,
-    profile: imageUrl
+    title: undefined,
+    subtitle: undefined,
+    description: undefined,
+    createdBy: user.value.firstName + " " + user.value.lastName,
+    status: "Published",
+    image: imageUrl
 })
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-    store.addTeam(event.data)
+    store.addBlog(event.data)
 }
 
 const handleFileUpload = async (event: Event) => {
@@ -313,21 +237,20 @@ const onUpdateProduct = () => {
         // Extract plain values to avoid circular references
         const updatedTeam = {
             id: team.value.id,
-            profile: imageUrl.value != null ? imageUrl.value : team.value.profile, // Assuming `imageUrl` is a ref with the URL as a string
-            firstname: team.value.firstname,
-            lastname: team.value.lastname,
-            phone: team.value.phone,
-            department: team.value.department,
-            position: team.value.position,
+            image: imageUrl.value != null ? imageUrl.value : team.value.image, // Assuming `imageUrl` is a ref with the URL as a string
+            title: team.value.title,
+            subtitle: team.value.subtitle,
+            description: team.value.description,
+            createdBy: team.value.createdBy,
             status: team.value.status // Assuming `imageUrl` is a ref with the URL as a string
         };
 
-        store.updateTeam(updatedTeam); // Pass a plain object
+        store.updateBlog(updatedTeam); // Pass a plain object
     }
 }
 
 const onDeleteProduct = (productId: any) => {
-    store.deleteTeam(productId);
+    store.deleteBlog(productId);
 }
 
 </script>

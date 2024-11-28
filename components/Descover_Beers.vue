@@ -1,61 +1,48 @@
 <script setup lang="ts">
-const items = [
-  {
-    src: 'http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_08-360x1320.png',
-    title: 'Irish Stout',
-    description: 'ABV 6,5% | IBU 60 | OG 1.104'
-  },
-  {
-    src: 'http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_03-360x1320.png',
-    title: 'Golden Beer',
-    description: 'ABV 5,5% | IBU 70 | OG 1.104'
-  },
-  {
-    src: 'http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_04-360x1320.png',
-    title: 'England Knights',
-    description: 'ABV 6,5% | IBU 60 | OG 1.104'
-  },
-  {
-    src: 'http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_05-360x1320.png',
-    title: 'Good Old Days',
-    description: 'ABV 8,5% | IBU 60 | OG 1.104'
-  },
-  {
-    src: 'http://weisber.like-themes.com/wp-content/uploads/2018/02/classic_01-360x1320.png',
-    title: 'Weis Beers',
-    description: 'ABV 6,0% | IBU 90 | OG 1.104'
-  },
-  {
-    src: 'http://weisber.like-themes.com/wp-content/uploads/2018/02/bottle_02-360x1277.png',
-    title: 'Golden Beer',
-    description: 'ABV 6,8% | IBU 50 | OG 1.104'
-  }
-]
+const store = useProductsStore()
+
+const items = computed(() => store.products)
+
+onMounted(() => {
+  store.getProducts()
+})
+
+const addToCart = (product: any) => {
+  console.log(product)
+}
 </script>
 
 <template>
   <div class="bg-gray-100 text-black">
-    <div class="max-w-7xl px-4 mx-auto sm:px-6 lg:px-8">
-      <div class="text-center py-7 lg:py-24 px-5">
-        <h1 class="text-5xl pb-5 text-[#F40035] font-bold">Discover our beer</h1>
+    <div class="max-w-screen-2xl px-4 py-20 mx-auto sm:px-6 lg:px-8">
+      <div class="text-center  lg:py-24 px-5">
+        <h1 class="text-5xl pb-5 uppercase text-[#F40035] font-bold"><span class="font-medium text-black">featured
+          </span>PRODUCTS
+        </h1>
         <p class="text-xl">Join us in raising a glass to unforgettable moments and unforgettable flavors. Cheers to
           excellence, from our distillery to your glass.
         </p>
       </div>
-      <UCarousel v-slot="{ item }" :items="items" :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/4' }" :prev-button="{
+      <UCarousel v-slot="{ item }" :items="items"
+        :ui="{ item: 'basis-full hover:bg-gray-50  duration-300 rounded-xl cursor-pointer group md:basis-1/2 lg:basis-1/4' }"
+        :prev-button="{
         color: 'gray',
         icon: 'i-heroicons-arrow-left-20-solid',
-        class: 'absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200'
+        class: 'absolute left-4 top-1/2 group hover:bg-gray-50 cursor-pointer transform -translate-y-1/2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200'
       }" :next-button="{
         color: 'gray',
         icon: 'i-heroicons-arrow-right-20-solid',
         class: 'absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200'
       }" arrows>
         <div class="flex flex-col items-center justify-center text-center p-4">
-          <div class="w-[100px] mx-auto">
-            <img :src="item.src" class="w-full" draggable="false">
+        <div class="bg-red-600 hidden py-2 px-3 text-xs rounded-full text-white font-semibold">20% Discount</div>
+
+          <div class="w-3/4 mx-auto">
+            <img :src="item.imageUrl" class="w-full" draggable="false">
           </div>
-          <h3 class="mt-2 text-2xl py-3 font-semibold">{{ item.title }}</h3>
+          <h3 class="text-sm  font-medium text-yellow-500">Gin</h3>
+          <h3 class="mt-0 text-2xl py-1 font-semibold group-hover:text-red-500 duration-300 transition-all">{{ item.name
+            }}</h3>
           <p class="text-gray-600">{{ item.description }}</p>
         </div>
       </UCarousel>

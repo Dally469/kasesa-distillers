@@ -1,7 +1,7 @@
 <template>
   <UContainer class="flex  justify-between mx-0 items-center h-lvh max-w-8xl">
 
-    <UContainer class="grid content-center bg-white h-lvh lg:w-1/3 w-full">
+    <UContainer class="grid content-center bg-white items-center h-lvh lg:w-1/3 w-full">
       <div class="flex flex-col items-center justify-start">
         <nuxt-link to="/" class="flex lg:ml-8 items-center">
           <img src="assets/images/kasesa-logo-01.png" class="h-14 lg:my-4" />
@@ -29,7 +29,7 @@
         <UFormGroup size="lg" v-slot="{ error }" label="Password" name="password" :ui="{ error: 'text-xs' }">
           <UInput v-model="state.password" :type="!show ? 'password' : 'text'" placeholder="Enter your password"
             :ui="{ icon: { trailing: { pointer: '' } } }">
-            <template #trailing>
+            <template #trailing>Button
               <UButton v-show="state.password !== ''" color="gray" variant="link"
                 :icon="error ? 'i-heroicons-exclamation-triangle-20-solid' : (!show ? 'i-heroicons-eye' : 'i-heroicons-eye-slash')"
                 :padded="false" @click="show = !show" />
@@ -48,9 +48,11 @@
         <UButton :disabled="!isEmailValid && isLoading" :loading="loadingItem == 1" size="lg" type="submit"
           color="primary" variant="solid" :label="loadingItem == 1 ? 'Processing...' : 'Login'" :trailing="false"
           block />
+        <UButton color="primary" to="/" variant="link">Back To Homepage</UButton>
 
-       </UForm>
-      
+      </UForm>
+
+
     </UContainer>
   </UContainer>
 </template>

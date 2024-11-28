@@ -36,17 +36,22 @@ export const useFirebaseUpload = () => {
     }
   };
 
+  
+
    const uploadMultipleImages = async (files: any) => {
      const urls = [];
 
-     for (const file of files) {
-       const fileRef = storageRef($storage, `gallery/${file.name}-${Date.now()}`);
-       await uploadBytes(fileRef, file);
-       const url = await getDownloadURL(fileRef);
-       
-       urls.push(url);
-     }
+     for (let file of files) {
+       const fileRef = storageRef($storage, 'gallery/' + file.name);
+       const uploadTask = uploadBytesResumable(fileRef, file);
 
+       // Wait for the upload to complete
+       await uploadTask;
+
+       // Get the download URL after the upload
+       const downloadURL = await getDownloadURL(fileRef);
+       urls.push(downloadURL);
+     }
      return urls;
    };
 
