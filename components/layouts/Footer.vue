@@ -24,9 +24,9 @@ const footerMenu = ref([
     title: "Company",
     menuLinks: [
       { title: 'About Us', url: '/about-us' },
-      { title: 'Our Mission', url: '/mission' },
-      { title: 'Our Vision', url: '/vision' },
-      { title: 'Our Core Values', url: '/core-values' },
+      { title: 'Our Mission', url: '/about-us' },
+      { title: 'Our Vision', url: '/about-us' },
+      { title: 'Our Core Values', url: '/about-us' },
       { title: 'Contact Us', url: '/contact-us' },
       { title: 'Team', url: '/team' },
     ]
@@ -35,11 +35,11 @@ const footerMenu = ref([
     id: "1",
     title: "Core Values",
     menuLinks: [
-      { title: 'Quality', url: '/core-values' },
-      { title: 'Innovation', url: '/core-values' },
-      { title: 'Integrity', url: '/core-values' },
-      { title: 'Customer Focus', url: '/core-values' },
-      { title: 'Community Engagement', url: '/core-values' },
+      { title: 'Quality', url: '/about-us' },
+      { title: 'Innovation', url: '/about-us' },
+      { title: 'Integrity', url: '/about-us' },
+      { title: 'Customer Focus', url: '/about-us' },
+      { title: 'Community Engagement', url: '/about-us' },
     ]
   }
 ])

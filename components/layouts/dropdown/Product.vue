@@ -23,7 +23,7 @@ const addToCart = (product: any) => {
           <img :src="product.imageUrl" class="w-full bg-transparent" draggable="false">
         </div>
         <h3 class="text-sm py-1 text-center text-black font-semibold group-hover:text-[#F40035] duration-300">{{ product.name }}</h3>
-        <p class="text-sm py-1 text-center text-gray-500 font-semibold group-hover:text-[#F40035] duration-300">{{ product.price }} RWF</p>
+        <p class="text-xs py-1 text-center text-gray-500 font-medium group-hover:text-[#F40035] duration-300">{{ product.description }} </p>
   
       </div>
     </div>

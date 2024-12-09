@@ -2,7 +2,7 @@
   <div class="  flex flex-col justify-center items-center">
     <Header :item="mainHead[0]" />
     <div id="contact">
-      
+
       <!-- About OUR COMPANY -->
       <section class=" w-full my-8 bg-slate-100 rounded-2xl">
         <div
@@ -110,7 +110,7 @@
                 <div class="flex-col duration-500 group-hover:translate-x-2">
 
                   <span class="text-xs text-muted font-light ">Email </span>
-                  <p class="text-red-500 text-md group-hover:text-red-700">info@kasesa.com / sales@kasesa.com</p>
+                  <p class="text-red-500 text-md group-hover:text-red-700">kasese2060@gmail.com</p>
                 </div>
               </div>
               <div
@@ -123,7 +123,7 @@
                 <div class="flex-col duration-500 group-hover:translate-x-2">
 
                   <span class="text-xs text-muted font-light ">Phone</span>
-                  <p class="text-red-500 text-md group-hover:text-red-700">(+250)78304204</p>
+                  <p class="text-red-500 text-md group-hover:text-red-700">(+250)788483857</p>
                 </div>
               </div>
               <div

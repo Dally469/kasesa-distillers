@@ -111,10 +111,10 @@
         </div>
       </div>
     </section>
-    <section class="py-10 relative bg-gray-50 sm:py-8 lg:py-12">
+    <section class="py-10 relative bg-[#eec599] sm:py-8 lg:py-12">
       <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-
-        <div class="px-5 py-8 mt-12 bg-white lg:mt-20 lg:p-16">
+        <img src="/assets/images/WhatsApp Image 2024-11-29 at 19.53.07.jpeg" class="h-[300px] w-auto mx-auto" />
+        <div class="px-5 py-8 mt-12 rounded-xl bg-white lg:mt-20 lg:p-16">
           <div class="grid grid-cols-1 gap-12 lg:gap-16 sm:grid-cols-2">
             <div class="flex items-start">
               <svg class="flex-shrink-0 w-16 h-16 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none"

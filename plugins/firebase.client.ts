@@ -6,6 +6,7 @@ import { getStorage } from 'firebase/storage';
 
 export default defineNuxtPlugin(() => {
   // Your web app's Firebase configuration
+
   const firebaseConfig = {
     apiKey: "AIzaSyBO-Wj0N3upz4hc7dXJogVbYSLmyvp0rsQ",
     authDomain: "taxi-9ba47.firebaseapp.com",
@@ -15,6 +16,7 @@ export default defineNuxtPlugin(() => {
     messagingSenderId: "666457075714",
     appId: "1:666457075714:web:2543938216c47e00baf71b",
   };
+
 
   // Initialize Firebase app
   const firebaseApp = initializeApp(firebaseConfig);
